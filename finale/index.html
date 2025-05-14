@@ -1,0 +1,446 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataDrip</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        header {
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            backdrop-filter: blur(5px);
+        }
+        .nav-auth {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            align-items: center;
+        }
+        nav ul li a {
+            color: #fff;
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        nav ul li a:hover {
+            color: #d48e0b;
+        }
+        .auth-buttons button {
+            background: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .auth-buttons button:hover {
+            background: #fff;
+            color: #000;
+        }
+        .logo-container img {
+            height: 400px;
+            width: auto;
+            position: static;
+            margin-top: 24px;
+        }
+        .hero {
+            margin-top: 0;
+            min-height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #333; /* Fallback color */
+        }
+        .carousel-slide.active {
+            opacity: 1;
+        }
+        .carousel-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .carousel-dot.active {
+            background: #fff;
+        }
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 3;
+            font-size: 24px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+        .carousel-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .carousel-prev {
+            left: 20px;
+        }
+        .carousel-next {
+            right: 20px;
+        }
+        .hero-text {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+            width: 100%;
+            max-width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            margin-bottom: 500px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        /* Remove default margin from body */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-header">
+            <div class="logo-container">
+                <img src="images/datadrip.png" alt="DataDrip Logo">
+            </div>
+        </div>
+        <div class="nav-auth">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="login-btn">Login</button>
+                <button class="signup-btn">Sign Up</button>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main>
+        <div class="hero">
+            <div class="carousel-slide active" style="background-image: url('images/homepageimage.png')"></div>
+            <div class="carousel-slide" style="background-image: url('images/homepageimage2.png')"></div>
+            <div class="carousel-slide" style="background-image: url('images/homepageimage3.png')"></div>
+            <div class="carousel-slide" style="background-image: url('images/homepageimage4.png')"></div>
+            <div class="carousel-arrow carousel-prev">&#10094;</div>
+            <div class="carousel-arrow carousel-next">&#10095;</div>
+            <div class="carousel-controls">
+                <div class="carousel-dot active"></div>
+                <div class="carousel-dot"></div>
+                <div class="carousel-dot"></div>
+                <div class="carousel-dot"></div>
+            </div>
+            <div class="hero-text">
+                <h1>Unapologetically Urban.</h1>
+                <p>SHOP NOW</p>
+                <button class="cta-button">Get Started</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+            </div>
+            <div class="social-icons">
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 DataDrip. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm" action="login.php" method="POST" autocomplete="on">
+                <input type="text" name="username" placeholder="Username" required autocomplete="username">
+                <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
+                <label class="admin-checkbox-label">
+                    <input type="checkbox" name="is_admin" id="is_admin">
+                    Login as Admin
+                </label>
+                <button type="submit">Login</button>
+                <div class="form-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Sign Up</h2>
+            <form id="signupForm" action="signup.php" method="POST" autocomplete="on">
+                <input type="text" name="full_name" placeholder="Full Name" required autocomplete="name">
+                <input type="text" name="username" placeholder="Username" required minlength="3" autocomplete="username">
+                <input type="email" name="email" placeholder="Email" required autocomplete="email">
+                <input type="text" name="address" placeholder="Address" required autocomplete="street-address">
+                <input type="tel" name="contact_number" placeholder="Contact Number" required autocomplete="tel">
+                <input type="password" name="password" placeholder="Password" required minlength="6" autocomplete="new-password">
+                <button type="submit">Sign Up</button>
+                <div class="form-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Load modals and functionality -->
+    <script>
+        // Run password setup script with better error handling
+        async function setupAdminAccount() {
+            try {
+                const response = await fetch('password_setup.php');
+                if (!response.ok) {
+                    throw new Error('Failed to setup admin account');
+                }
+                const data = await response.json();
+                
+                if (data.success) {
+                    console.log('Admin account setup successful');
+                    // Optionally show a success message to the user
+                } else {
+                    console.error('Admin setup failed:', data.error);
+                }
+            } catch (error) {
+                console.error('Error setting up admin account:', error);
+                // Optionally show an error message to the user
+            }
+        }
+
+        // Run setup when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            setupAdminAccount()
+                .then(data => {
+                    console.log('Password setup result:', data);
+                })
+                .catch(error => {
+                    console.error('Error running password setup:', error);
+                });
+
+        // Check if messages table setup has been run
+        if (!localStorage.getItem('messagesTableSetupCompleted')) {
+            // Run messages table setup script
+            fetch('create_messages_table.php')
+                .then(response => response.text())
+                .then(data => {
+                    console.log('Messages table setup result:', data);
+                    // Store that setup has been completed
+                    localStorage.setItem('messagesTableSetupCompleted', 'true');
+                })
+                .catch(error => {
+                    console.error('Messages table setup error:', error);
+                });
+        }
+
+        // Check if database setup has been run
+        if (!localStorage.getItem('databaseSetupCompleted')) {
+            // Run database setup script
+            fetch('database_setup.php')
+                .then(response => response.text())
+                .then(data => {
+                    console.log('Database setup result:', data);
+                    // Store that setup has been completed
+                    localStorage.setItem('databaseSetupCompleted', 'true');
+                })
+                .catch(error => {
+                    console.error('Database setup error:', error);
+                });
+        }
+
+        // Check if admin setup has been run
+        if (!localStorage.getItem('adminSetupCompleted')) {
+            // Run password setup script
+            fetch('password_setup.php')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Admin setup result:', data);
+                    if (data.success) {
+                        console.log('Admin credentials:', {
+                            username: data.username,
+                            password: data.password
+                        });
+                        // Store that setup has been completed
+                        localStorage.setItem('adminSetupCompleted', 'true');
+                    } else {
+                        console.error('Admin setup failed:', data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Admin setup error:', error);
+                });
+        }
+    </script>
+
+    <!-- Load external scripts -->
+    <script src="modal.js"></script>
+    
+    <!-- Run password setup -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if admin account exists
+            fetch('password_setup.php', {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('Admin account setup:', data.message);
+                } else {
+                    console.error('Admin account setup failed:', data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error checking admin account:', error);
+            });
+        });
+    </script>
+
+    <!-- Inline carousel script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            const prevBtn = document.querySelector('.carousel-prev');
+            const nextBtn = document.querySelector('.carousel-next');
+            const controls = document.querySelector('.carousel-controls');
+
+            let currentSlide = 0;
+            let slideInterval;
+
+            function showSlide(index) {
+                if (!slides.length) return;
+
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                currentSlide = (index + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+                if (dots[currentSlide]) {
+                    dots[currentSlide].classList.add('active');
+                }
+            }
+
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+
+            function prevSlide() {
+                showSlide(currentSlide - 1);
+            }
+
+            function startSlideshow() {
+                slideInterval = setInterval(nextSlide, 7000);
+            }
+
+            function pauseSlideshow() {
+                clearInterval(slideInterval);
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    pauseSlideshow();
+                    nextSlide();
+                    startSlideshow();
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    pauseSlideshow();
+                    prevSlide();
+                    startSlideshow();
+                });
+            }
+
+            if (dots.length) {
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        pauseSlideshow();
+                        showSlide(index);
+                        startSlideshow();
+                    });
+                });
+            }
+
+            if (controls) {
+                controls.addEventListener('mouseenter', pauseSlideshow);
+                controls.addEventListener('mouseleave', startSlideshow);
+            }
+
+            showSlide(0); // Show the first slide on load
+            startSlideshow();
+        });
+    </script>
+</body>
+      
+</html>
